@@ -6,8 +6,9 @@ import Settings from '../../screens/Settings';
 import Subscriptions from '../../screens/Subscriptions';
 import {navigate} from '../RootNavigator';
 import styles from './styles';
-import JIcon from '../../components/JIcon';
+import JIcon from '../../components/common/JIcon';
 import colors from '../../assets/themes/colors';
+import HomeStack from '../HomeNavigator/index';
 export default function TabNavigator() {
   const [tabIndex, setTabIndex] = useState(0);
   const Tab = createBottomTabNavigator();
@@ -18,7 +19,7 @@ export default function TabNavigator() {
       title: 'Ana Sayfa',
       onPress: e => {
         setTabIndex(e);
-        navigate('Home');
+        navigate('HomeStack');
       },
       icon: (
         <JIcon
@@ -92,7 +93,11 @@ export default function TabNavigator() {
   };
   return (
     <Tab.Navigator tabBar={props => <TabMenu {...props} />}>
-      <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
+      <Tab.Screen
+        name="HomeStack"
+        component={HomeStack}
+        options={{headerShown: false}}
+      />
       <Tab.Screen
         name="Subscriptions"
         component={Subscriptions}

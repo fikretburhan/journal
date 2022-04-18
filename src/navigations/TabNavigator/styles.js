@@ -1,6 +1,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
-const window = Dimensions.get('window');
 import colors from '../../assets/themes/colors';
+
+const window = Dimensions.get('window');
 export default StyleSheet.create({
   tabWrapper: {
     flexDirection: 'row',

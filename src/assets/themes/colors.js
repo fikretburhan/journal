@@ -13,8 +13,6 @@ export default {
   green: '#006633',
   turquoise: '#1ACFD5',
   black: '#000000',
-  // darkBlue: '#342087',
-  // lightBlue: '#928BAE',
-  darkBlue: '#FF00FF',
-  lightBlue: '#FFCCFF',
+  darkBlue: '#342087',
+  lightBlue: '#928BAE',
 };
