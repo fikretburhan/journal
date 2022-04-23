@@ -29,13 +29,20 @@ export default class LatestArticlesComponent extends Component {
             const imgSource = this.getImageSource(item.image);
             return (
               <TouchableOpacity style={styles.singleItem}>
+                <Text style={styles.itemTitle}>{item.title}</Text>
                 <View style={styles.imageBox}>
-                  {item.image && (
+                  {item.image ? (
                     <Image source={imgSource} style={styles.image} />
+                  ) : (
+                    <View style={styles.image} />
                   )}
                 </View>
-                <Text style={styles.itemTitle}>{item.title}</Text>
-                <Text style={styles.shortDesc}>{item.shortDesc}</Text>
+
+                <Text style={styles.shortDesc}>
+                  {item.shortDesc.length > 70
+                    ? `${item.shortDesc.slice(0, 70)}...`
+                    : item.shortDesc}
+                </Text>
                 <View style={styles.dateBox}>
                   <Text style={styles.date}>
                     {moment(item.date).format('DD-MM-yyyy')}

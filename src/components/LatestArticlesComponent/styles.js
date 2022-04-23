@@ -5,18 +5,20 @@ const deviceHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
   listContainer: {
     flexDirection: 'column',
+    justifyContent: 'space-around',
     backgroundColor: colors.white,
     height: deviceHeight / 3.5,
   },
   listTitle: {
     fontFamily: 'Roboto-Bold',
     fontSize: 16,
-    padding: 10,
+    padding: 8,
     color: colors.darkBlue,
   },
   singleItem: {
     flexDirection: 'column',
-    width: 120,
+    justifyContent: 'space-around',
+    width: 140,
     padding: 10,
     margin: 5,
     shadowColor: '#000',
@@ -30,15 +32,31 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 5,
   },
-  imageBox: {},
-  image: {height: 80, width: 100},
+  imageBox: {
+    //height: deviceHeight / 10,
+    padding: 5,
+  },
+  image: {height: 80, width: 100, borderRadius: 5},
   itemTitle: {
     color: colors.danger,
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 12,
+    paddingVertical: 3,
+    //height: deviceHeight / 32,
   },
   shortDesc: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 12,
+    fontSize: 10,
+    paddingVertical: 5,
+    //height: deviceHeight / 10,
   },
-  dateBox: {},
-  date: {},
+  dateBox: {
+    //height: deviceHeight / 32,
+    alignSelf: 'flex-end',
+    marginBottom: 2,
+  },
+  date: {
+    fontSize: 12,
+    fontFamily: 'Roboto-Bold',
+  },
 });
