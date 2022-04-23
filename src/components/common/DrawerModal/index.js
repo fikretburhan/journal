@@ -8,6 +8,7 @@ export default class DrawerModal extends Component {
   render() {
     const DrawerList = [
       {
+        index: 0,
         title: 'Fikret Burhan Yılmaz',
         icon: (
           <JIcon
@@ -19,8 +20,8 @@ export default class DrawerModal extends Component {
         ),
         onPress: () => {},
       },
-      {title: 'Profil', icon: null, onPress: () => {}},
-      {title: 'Ayarlar', icon: null, onPress: () => {}},
+      {index: 1, title: 'Profil', icon: null, onPress: () => {}},
+      {index: 2, title: 'Ayarlar', icon: null, onPress: () => {}},
     ];
     return (
       <Modal {...this.props} visible={this.props.modalVisible}>
@@ -31,19 +32,19 @@ export default class DrawerModal extends Component {
             <View style={styles.modalView}>
               {DrawerList.map((item, index) => {
                 return (
-                  <>
-                    <TouchableOpacity style={styles.modalItem} key={item.title}>
+                  <View key={item.index}>
+                    <TouchableOpacity style={styles.modalItem}>
                       <Text
                         style={{
                           color: colors.black,
-                          fontFamily: 'Pasifico',
+                          fontFamily: 'Lobster-Regular',
                         }}>
                         {item.title}
                       </Text>
                       {item.icon}
                     </TouchableOpacity>
                     <Divider style={styles.divider} color={colors.darkBlue} />
-                  </>
+                  </View>
                 );
               })}
             </View>

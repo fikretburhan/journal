@@ -4,8 +4,9 @@ import {navigate} from '../../navigations/RootNavigator';
 import styles from './styles';
 import JIcon from '../common/JIcon';
 import colors from '../../assets/themes/colors';
-import DrawerIcon from './DrawerIconComponent';
 import DrawerModal from '../common/DrawerModal';
+import LatestArticles from '../LatestArticlesComponent';
+import DrawerIconComponent from '../DrawerIconComponent';
 
 export default class HomeComponent extends Component {
   render() {
@@ -13,8 +14,11 @@ export default class HomeComponent extends Component {
       <>
         <View>
           <View style={styles.navBar}>
-            <DrawerIcon onPress={this.props.setModalVisible} />
+            <DrawerIconComponent onPress={this.props.setModalVisible} />
           </View>
+        </View>
+        <View>
+          <LatestArticles />
         </View>
         <DrawerModal
           animationType="fade"
