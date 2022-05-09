@@ -47,7 +47,7 @@ export default StyleSheet.create({
   shortDesc: {
     fontFamily: 'Montserrat-Bold',
     fontSize: 10,
-    paddingVertical: 5,
+    paddingVertical: 15,
     //height: deviceHeight / 10,
   },
   dateBox: {

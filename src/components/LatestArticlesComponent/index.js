@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import data from '../../dummyData/latestArticles';
 import styles from './styles';
 import moment from 'moment';
+
 export default class LatestArticlesComponent extends Component {
   getImageSource = name => {
     switch (name) {
@@ -18,7 +19,7 @@ export default class LatestArticlesComponent extends Component {
   };
   render() {
     return (
-      <View style={styles.listContainer}>
+      <View>
         <Text style={styles.listTitle}>Güncel Makaleler</Text>
         <FlatList
           horizontal={true}

@@ -17,7 +17,7 @@ export default class HomeComponent extends Component {
             <DrawerIconComponent onPress={this.props.setModalVisible} />
           </View>
         </View>
-        <View>
+        <View style={styles.listContainer}>
           <LatestArticles />
         </View>
         <DrawerModal
