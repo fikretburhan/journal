@@ -40,8 +40,8 @@ export default class LatestArticlesComponent extends Component {
                 </View>
 
                 <Text style={styles.shortDesc}>
-                  {item.shortDesc.length > 70
-                    ? `${item.shortDesc.slice(0, 70)}...`
+                  {item.shortDesc.length > 50
+                    ? `${item.shortDesc.slice(0, 50)}...`
                     : item.shortDesc}
                 </Text>
                 <View style={styles.dateBox}>

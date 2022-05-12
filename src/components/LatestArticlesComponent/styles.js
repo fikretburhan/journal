@@ -19,7 +19,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-around',
     width: 140,
-    padding: 10,
+    padding: 5,
     margin: 5,
     shadowColor: '#000',
     shadowOffset: {
@@ -34,20 +34,20 @@ export default StyleSheet.create({
   },
   imageBox: {
     //height: deviceHeight / 10,
-    padding: 5,
+    padding: 2,
   },
-  image: {height: 80, width: 100, borderRadius: 5},
+  image: {height: 60, width: 100, borderRadius: 5},
   itemTitle: {
     color: colors.danger,
     fontFamily: 'Montserrat-SemiBold',
     fontSize: 12,
-    paddingVertical: 3,
+    paddingVertical: 2,
     //height: deviceHeight / 32,
   },
   shortDesc: {
     fontFamily: 'Montserrat-Bold',
     fontSize: 10,
-    paddingVertical: 15,
+    paddingVertical: 2,
     //height: deviceHeight / 10,
   },
   dateBox: {
@@ -56,7 +56,8 @@ export default StyleSheet.create({
     marginBottom: 2,
   },
   date: {
-    fontSize: 12,
+    fontSize: 8,
     fontFamily: 'Roboto-Bold',
+    color: colors.danger,
   },
 });

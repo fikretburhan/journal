@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../../screens/Home';
 import Settings from '../../screens/Settings';
 import Subscriptions from '../../screens/Subscriptions';
+import Archive from '../../screens/Archive';
 import {navigate} from '../RootNavigator';
 import styles from './styles';
 import JIcon from '../../components/common/JIcon';
@@ -32,38 +33,38 @@ export default function TabNavigator() {
     },
     {
       index: 1,
-      name: 'Subscriptions',
-      title: 'Abonelikler',
+      name: 'Archive',
+      title: 'Arşivim',
       onPress: e => {
         setTabIndex(e);
-        navigate('Subscriptions');
+        navigate('Archive');
       },
       icon: (
         <JIcon
           type="Ionicons"
-          name="newspaper"
+          name="archive"
           size={20}
           color={tabIndex == 1 ? colors.darkBlue : colors.lightBlue}
         />
       ),
     },
-    {
-      index: 2,
-      name: 'Settings',
-      title: 'Ayarlar',
-      onPress: e => {
-        setTabIndex(e);
-        navigate('Settings');
-      },
-      icon: (
-        <JIcon
-          type="Ionicons"
-          name="settings"
-          size={20}
-          color={tabIndex == 2 ? colors.darkBlue : colors.lightBlue}
-        />
-      ),
-    },
+    // {
+    //   index: 2,
+    //   name: 'Settings',
+    //   title: 'Ayarlar',
+    //   onPress: e => {
+    //     setTabIndex(e);
+    //     navigate('Settings');
+    //   },
+    //   icon: (
+    //     <JIcon
+    //       type="Ionicons"
+    //       name="settings"
+    //       size={20}
+    //       color={tabIndex == 2 ? colors.darkBlue : colors.lightBlue}
+    //     />
+    //   ),
+    // },
   ];
   const TabMenu = () => {
     return (
@@ -99,9 +100,14 @@ export default function TabNavigator() {
         options={{headerShown: false}}
       />
       <Tab.Screen
+        name="Archive"
+        component={Archive}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
         name="Subscriptions"
         component={Subscriptions}
-        options={{headerShown: false}}
+        options={{headerBackTitleVisible: false, headerShown: false}}
       />
       <Tab.Screen
         name="Settings"

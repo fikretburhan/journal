@@ -9,8 +9,8 @@ export default StyleSheet.create({
     height: window.height / 15,
     alignItems: 'center',
     backgroundColor: colors.white,
-    borderTopStartRadius: 10,
-    borderTopEndRadius: 10,
+    borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

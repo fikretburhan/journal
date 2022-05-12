@@ -15,6 +15,17 @@ export default class Home extends Component {
       modalVisible: !prevState.modalVisible,
     }));
   };
+  componentDidMount() {
+    this.setModalVisibleEvent = this.props.navigation.addListener(
+      'focus',
+      () => {
+        this.setState({modalVisible: false});
+      },
+    );
+  }
+  componentWillUnmount() {
+    this.setModalVisibleEvent();
+  }
   render() {
     return (
       <HomeComponent

@@ -4,6 +4,7 @@ import styles from './styles';
 import {Divider} from '@rneui/themed';
 import JIcon from '../JIcon';
 import colors from '../../../assets/themes/colors';
+import {navigate} from '../../../navigations/RootNavigator';
 export default class DrawerModal extends Component {
   render() {
     const DrawerList = [
@@ -21,7 +22,20 @@ export default class DrawerModal extends Component {
         onPress: () => {},
       },
       {index: 1, title: 'Profil', icon: null, onPress: () => {}},
-      {index: 2, title: 'Ayarlar', icon: null, onPress: () => {}},
+      {
+        index: 2,
+        title: 'Ayarlar',
+        icon: null,
+        onPress: () => {
+          navigate('Settings');
+        },
+      },
+      {
+        index: 3,
+        title: 'Abonelikler',
+        icon: null,
+        onPress: () => navigate('Subscriptions'),
+      },
     ];
     return (
       <Modal {...this.props} visible={this.props.modalVisible}>
@@ -33,11 +47,13 @@ export default class DrawerModal extends Component {
               {DrawerList.map((item, index) => {
                 return (
                   <View key={item.index}>
-                    <TouchableOpacity style={styles.modalItem}>
+                    <TouchableOpacity
+                      style={styles.modalItem}
+                      onPress={item.onPress}>
                       <Text
                         style={{
                           color: colors.black,
-                          fontFamily: 'Lobster-Regular',
+                          fontFamily: 'Roboto-Bold',
                         }}>
                         {item.title}
                       </Text>

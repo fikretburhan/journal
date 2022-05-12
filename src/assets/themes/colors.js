@@ -15,4 +15,5 @@ export default {
   black: '#000000',
   darkBlue: '#342087',
   lightBlue: '#928BAE',
+  linearDark: '#DEDBEC',
 };

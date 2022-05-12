@@ -4,7 +4,7 @@ export default [
     title: 'Yapay Zeka',
     shortDesc:
       'Zoubin Ghahramani ile insan ve yapay zekayı, öğrenen makinaları ve yapay zeka ile bizi nasıl bir gelecek beklediğini konuştuk',
-    date: new Date(),
+    date: new Date('2021-12-17T03:24:00'),
     image: 'ai',
     detail:
       "Sinemalarda kötü niyetli robotların dünyayı ele geçirdiği filmler ile birlikte birçok kişi yapay zekanın insan hayatı üzerindeki etkisinden endişe ediyor.Berlin Teknik Üniversitesi'nin bu yılki 'Kraliçe Dersi' çerçevesinde bir konuşma yapan yapay zeka ve mühendislik uzmanı Profesör Zoubin Ghahramani ile insan ve yapay zekayı, öğrenen makinaları ve yapay zeka ile bizi nasıl bir gelecek beklediğini konuştuk.Profesör Ghahramani, yapay zeka ve öğrenen makinalardan bahsetmeye başlamadan önce, bize insan zekasının ne olduğunu anlatabilir misiniz?",
@@ -12,10 +12,12 @@ export default [
   {
     id: 1,
     title: 'Elektrikli Otomobiller',
-    shortDesc: '',
+    shortDesc:
+      'Elektrikli otomobil, elektrik enerjisi ile çalışan otomobillere verilen isimdir. Elektrikli otomobillerin, otomotiv endüstrisinde ileride önemli bir etkisinin olacağı düşünülmektedir.',
     date: new Date(),
     image: 'electriccar',
-    detail: '',
+    detail:
+      "Berlin Teknik Üniversitesi'nin bu yılki 'Kraliçe Dersi' çerçevesinde bir konuşma yapan yapay zeka ve mühendislik uzmanı Profesör Zoubin Ghahramani ile insan ve yapay zekayı, öğrenen makinaları ve yapay zeka ile bizi nasıl bir gelecek beklediğini konuştuk.",
   },
   {
     id: 2,
