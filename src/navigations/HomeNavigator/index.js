@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {View, Text, TouchableOpacity} from 'react-native';
 import JournalDetail from '../../screens/JournalDetail';
 import Subscriptions from '../../screens/Subscriptions';
+import ArticleDetail from '../../screens/ArticleDetail';
 import Home from '../../screens/Home';
 import colors from '../../assets/themes/colors';
 import JIcon from '../../components/common/JIcon';
@@ -21,7 +22,6 @@ export default function HomeNavigator({navigation}) {
         component={JournalDetail}
         options={({route}) => ({
           title: route.params.name,
-          //title: 'test',
           headerStyle: {backgroundColor: colors.darkBlue},
           headerTitleStyle: {color: colors.white},
           headerTitleAlign: 'center',
@@ -37,6 +37,11 @@ export default function HomeNavigator({navigation}) {
             </TouchableOpacity>
           ),
         })}
+      />
+      <HomeStack.Screen
+        name="ArticleDetail"
+        component={ArticleDetail}
+        options={{headerBackTitleVisible: false, headerShown: false}}
       />
     </HomeStack.Navigator>
   );

@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import data from '../../dummyData/latestArticles';
 import styles from './styles';
 import moment from 'moment';
+import {navigate} from '../../navigations/RootNavigator';
 
 export default class LatestArticlesComponent extends Component {
   getImageSource = name => {
@@ -29,7 +30,14 @@ export default class LatestArticlesComponent extends Component {
           renderItem={({item}) => {
             const imgSource = this.getImageSource(item.image);
             return (
-              <TouchableOpacity style={styles.singleItem}>
+              <TouchableOpacity
+                style={styles.singleItem}
+                onPress={() =>
+                  navigate('ArticleDetail', {
+                    article: item,
+                    imgSource: imgSource,
+                  })
+                }>
                 <Text style={styles.itemTitle}>{item.title}</Text>
                 <View style={styles.imageBox}>
                   {item.image ? (
