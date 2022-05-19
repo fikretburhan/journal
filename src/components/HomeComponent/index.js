@@ -37,7 +37,7 @@ export default class HomeComponent extends Component {
         <DrawerModal
           animationType="fade"
           transparent={true}
-          title="test"
+          title=""
           modalVisible={this.props.modalVisible}
           setModalVisible={this.props.setModalVisible}
         />

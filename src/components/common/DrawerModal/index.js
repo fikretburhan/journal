@@ -28,6 +28,7 @@ export default class DrawerModal extends Component {
         icon: null,
         onPress: () => {
           navigate('Settings');
+          this.props.setModalVisible();
         },
       },
       {

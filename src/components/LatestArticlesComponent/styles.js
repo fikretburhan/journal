@@ -60,4 +60,9 @@ export default StyleSheet.create({
     fontFamily: 'Roboto-Bold',
     color: colors.danger,
   },
+  titleView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
 });

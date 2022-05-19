@@ -109,11 +109,11 @@ export default function TabNavigator() {
         component={Subscriptions}
         options={{headerBackTitleVisible: false, headerShown: false}}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Settings"
         component={Settings}
         options={{headerShown: false}}
-      />
+      /> */}
     </Tab.Navigator>
   );
 }

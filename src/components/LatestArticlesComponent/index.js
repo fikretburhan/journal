@@ -4,6 +4,8 @@ import data from '../../dummyData/latestArticles';
 import styles from './styles';
 import moment from 'moment';
 import {navigate} from '../../navigations/RootNavigator';
+import JIcon from '../common/JIcon';
+import colors from '../../assets/themes/colors';
 
 export default class LatestArticlesComponent extends Component {
   getImageSource = name => {
@@ -21,7 +23,17 @@ export default class LatestArticlesComponent extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.listTitle}>Güncel Makaleler</Text>
+        <View style={styles.titleView}>
+          <Text style={styles.listTitle}>Güncel Makaleler</Text>
+          <View style={{marginRight: 10}}>
+            <JIcon
+              type="MaterialIcons"
+              name="code"
+              size={20}
+              color={colors.gray}
+            />
+          </View>
+        </View>
         <FlatList
           horizontal={true}
           showsHorizontalScrollIndicator={false}
