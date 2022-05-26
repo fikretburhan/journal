@@ -1,13 +1,17 @@
 import {Text, View} from 'react-native';
 import React, {Component} from 'react';
 import JournalDetailComponent from '../../components/JournalDetailComponent';
-
-export default class JournalDetail extends Component {
+class JournalDetail extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {}
+
+  componentDidMount() {
+    console.log('JournalDetail', this.props);
+  }
   render() {
     return <JournalDetailComponent {...this.props} />;
   }
 }
+
+export default JournalDetail;

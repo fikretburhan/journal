@@ -10,19 +10,20 @@ import Home from '../../screens/Home';
 import colors from '../../assets/themes/colors';
 import JIcon from '../../components/common/JIcon';
 import {navigate} from '../RootNavigator';
+import TabNavigator from '../TabNavigator';
 export default function HomeNavigator({navigation}) {
   const HomeStack = createNativeStackNavigator();
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name="Home"
-        component={Home}
+        name="Tab"
+        component={TabNavigator}
         options={{headerBackTitleVisible: false, headerShown: false}}
       />
       <HomeStack.Screen
         name="JournalDetail"
         component={JournalDetail}
-        options={({route}) => ({
+        options={({route, navigation}) => ({
           title: route.params.name,
           headerStyle: {backgroundColor: colors.darkBlue},
           headerTitleStyle: {color: colors.white},
@@ -53,7 +54,7 @@ export default function HomeNavigator({navigation}) {
       <HomeStack.Screen
         name="Settings"
         component={Settings}
-        options={{
+        options={({navigation}) => ({
           title: 'Ayarlar',
           headerStyle: {backgroundColor: colors.darkBlue},
           headerTitleStyle: {color: colors.white},
@@ -69,7 +70,7 @@ export default function HomeNavigator({navigation}) {
               />
             </TouchableOpacity>
           ),
-        }}
+        })}
       />
     </HomeStack.Navigator>
   );

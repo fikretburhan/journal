@@ -20,7 +20,7 @@ export default function TabNavigator() {
       title: 'Ana Sayfa',
       onPress: e => {
         setTabIndex(e);
-        navigate('HomeStack');
+        navigate('Home');
       },
       icon: (
         <JIcon
@@ -48,23 +48,6 @@ export default function TabNavigator() {
         />
       ),
     },
-    // {
-    //   index: 2,
-    //   name: 'Settings',
-    //   title: 'Ayarlar',
-    //   onPress: e => {
-    //     setTabIndex(e);
-    //     navigate('Settings');
-    //   },
-    //   icon: (
-    //     <JIcon
-    //       type="Ionicons"
-    //       name="settings"
-    //       size={20}
-    //       color={tabIndex == 2 ? colors.darkBlue : colors.lightBlue}
-    //     />
-    //   ),
-    // },
   ];
   const TabMenu = () => {
     return (
@@ -94,11 +77,7 @@ export default function TabNavigator() {
   };
   return (
     <Tab.Navigator tabBar={props => <TabMenu {...props} />}>
-      <Tab.Screen
-        name="HomeStack"
-        component={HomeStack}
-        options={{headerShown: false}}
-      />
+      <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
       <Tab.Screen
         name="Archive"
         component={Archive}
