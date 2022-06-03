@@ -10,7 +10,7 @@ export default class AppNavContainer extends Component {
   render() {
     return (
       <NavigationContainer ref={navigationRef}>
-        <HomeNavigator />
+        <TabNavigator />
       </NavigationContainer>
     );
   }

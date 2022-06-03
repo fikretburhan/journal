@@ -21,21 +21,20 @@ export default class DrawerModal extends Component {
         ),
         onPress: () => {},
       },
-      {index: 1, title: 'Profil', icon: null, onPress: () => {}},
       {
         index: 2,
+        title: 'Profil',
+        icon: null,
+        onPress: () => navigate('Profile'),
+      },
+      {
+        index: 3,
         title: 'Ayarlar',
         icon: null,
         onPress: () => {
           navigate('Settings');
           this.props.setModalVisible();
         },
-      },
-      {
-        index: 3,
-        title: 'Abonelikler',
-        icon: null,
-        onPress: () => navigate('Subscriptions'),
       },
     ];
     return (
