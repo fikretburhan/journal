@@ -2,6 +2,8 @@ import {Text, View} from 'react-native';
 import React, {Component} from 'react';
 import ProfileComponent from '../../components/ProfileComponent/index';
 import strings from '../../../strings';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export default class Profile extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,18 @@ export default class Profile extends Component {
       error: {},
     };
   }
-  onSaveButtonPress = () => {
+
+  async componentDidMount() {
+    try {
+      await AsyncStorage.getItem('profile').then(value => {
+        this.setState({form: JSON.parse(value)});
+      });
+    } catch (err) {
+      console.log('err', err);
+    }
+  }
+  onSaveButtonPress = async () => {
+    console.log('onsavebutton press');
     const {
       firstname,
       lastname,
@@ -24,20 +37,19 @@ export default class Profile extends Component {
       country,
       city,
     } = this.state.form;
-
-    if (firstname == undefined) {
+    if (firstname == undefined || firstname.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {...prevState.error, ['firstname']: strings.thisFieldIsRequired},
       }));
     }
-    if (lastname == undefined) {
+    if (lastname == undefined || lastname.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {...prevState.error, ['lastname']: strings.thisFieldIsRequired},
       }));
     }
-    if (email == undefined) {
+    if (email == undefined || email.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {...prevState.error, ['email']: strings.thisFieldIsRequired},
@@ -51,13 +63,13 @@ export default class Profile extends Component {
         }));
       }
     }
-    if (phone == undefined) {
+    if (phone == undefined || phone.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {...prevState.error, ['phone']: strings.thisFieldIsRequired},
       }));
     }
-    if (department == undefined) {
+    if (department == undefined || department.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {
@@ -66,7 +78,7 @@ export default class Profile extends Component {
         },
       }));
     }
-    if (job == undefined) {
+    if (job == undefined || job.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {
@@ -75,7 +87,7 @@ export default class Profile extends Component {
         },
       }));
     }
-    if (gradyear == undefined) {
+    if (gradyear == undefined || gradyear.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {
@@ -84,7 +96,7 @@ export default class Profile extends Component {
         },
       }));
     }
-    if (company == undefined) {
+    if (company == undefined || company.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {
@@ -93,7 +105,7 @@ export default class Profile extends Component {
         },
       }));
     }
-    if (city == undefined) {
+    if (city == undefined || city.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {
@@ -102,7 +114,7 @@ export default class Profile extends Component {
         },
       }));
     }
-    if (country == undefined) {
+    if (country == undefined || country.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
         error: {
@@ -110,6 +122,13 @@ export default class Profile extends Component {
           ['company']: strings.thisFieldIsRequired,
         },
       }));
+    }
+    if (
+      Object.values(this.state.form).length &&
+      Object.values(this.state.form).every(item => item.trim().length > 0) &&
+      Object.values(this.state.error).every(item => !item)
+    ) {
+      await AsyncStorage.setItem('profile', JSON.stringify(this.state.form));
     }
   };
   onChangeText = ({type, value}) => {
@@ -127,23 +146,36 @@ export default class Profile extends Component {
             '-',
             match[4],
           ].join('');
-
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
+          form: {...prevState.form, [type]: value},
+          error: {...prevState.error, [type]: null},
           phoneNum: number,
-        });
+        }));
 
         return;
+      } else {
+        this.setState(prevState => ({
+          phoneNum: value,
+          form: {...prevState.form, ['phone']: ''},
+          // error: {
+          //   ...prevState.error,
+          //   ['phone']: 'Lütfen geçerli bir telefon numarası yazınız',
+          // },
+        }));
       }
-
-      this.setState({
-        phoneNum: value,
-      });
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        form: {...prevState.form, [type]: value},
+      }));
+      if (value.trim().length > 0) {
+        this.setState(prevState => ({
+          ...prevState,
+          error: {...prevState.error, [type]: null},
+        }));
+      }
     }
-    this.setState(prevState => ({
-      ...prevState,
-      form: {...prevState.form, [type]: value},
-      error: {...prevState.error, [type]: null},
-    }));
   };
   render() {
     return (
@@ -152,6 +184,7 @@ export default class Profile extends Component {
         onChangeText={this.onChangeText}
         phoneNum={this.state.phoneNum}
         error={this.state.error}
+        form={this.state.form}
       />
     );
   }

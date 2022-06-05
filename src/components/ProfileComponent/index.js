@@ -18,6 +18,34 @@ export default class ProfileComponent extends Component {
   }
   componentDidMount() {}
   render() {
+    const {
+      form: {
+        firstname,
+        lastname,
+        email,
+        phone,
+        department,
+        gradyear,
+        job,
+        company,
+        country,
+        city,
+      },
+      error: {
+        firstname: firstname_error,
+        lastname: lastname_error,
+        email: email_error,
+        phone: phone_error,
+        department: department_error,
+        gradyear: gradyear_error,
+        job: job_error,
+        company: company_error,
+        country: country_error,
+        city: city_error,
+      },
+      onSaveButtonPress,
+      onChangeText,
+    } = this.props;
     return (
       <ScrollView style={{backgroundColor: 'white'}}>
         <View style={styles.personIconView}>
@@ -32,92 +60,85 @@ export default class ProfileComponent extends Component {
           label={strings.firstName}
           placeholder={strings.enterFirstName}
           onChangeText={value =>
-            this.props.onChangeText({type: 'firstname', value: value})
+            onChangeText({type: 'firstname', value: value})
           }
-          error={this.props.error.firstname}
+          error={firstname_error}
+          value={firstname}
         />
         <Input
           label={strings.lastName}
           placeholder={strings.enterLastName}
-          onChangeText={value =>
-            this.props.onChangeText({type: 'lastname', value: value})
-          }
-          error={this.props.error.lastname}
+          onChangeText={value => onChangeText({type: 'lastname', value: value})}
+          error={lastname_error}
+          value={lastname}
         />
         <Input
           label={strings.email}
           placeholder={strings.enterEmailAddress}
-          onChangeText={value =>
-            this.props.onChangeText({type: 'email', value: value})
-          }
-          error={this.props.error.email}
+          onChangeText={value => onChangeText({type: 'email', value: value})}
+          error={email_error}
+          value={email}
         />
         <Input
           label={strings.phone}
           placeholder={strings.enterPhone}
-          onChangeText={value =>
-            this.props.onChangeText({type: 'phone', value: value})
-          }
+          onChangeText={value => onChangeText({type: 'phone', value: value})}
           textContentType="telephoneNumber"
           dataDetectorTypes="phoneNumber"
           keyboardType="phone-pad"
           maxLength={14}
-          value={this.props.phoneNum}
-          error={this.props.error.phone}
+          value={this.props.phoneNum ? this.props.phoneNum : phone}
+          error={phone_error}
         />
         <Input
           label={strings.department}
           placeholder={strings.enterDepartment}
           onChangeText={value =>
-            this.props.onChangeText({type: 'department', value: value})
+            onChangeText({type: 'department', value: value})
           }
-          error={this.props.error.department}
+          error={department_error}
+          value={department}
         />
         <Input
           label={strings.gradDate}
           placeholder={strings.entergradDate}
           keyboardType="numeric"
           maxLength={4}
-          onChangeText={value =>
-            this.props.onChangeText({type: 'gradyear', value: value})
-          }
-          error={this.props.error.gradyear}
+          onChangeText={value => onChangeText({type: 'gradyear', value: value})}
+          error={gradyear_error}
+          value={gradyear}
         />
         <Input
           label={strings.job}
           placeholder={strings.enterJob}
-          onChangeText={value =>
-            this.props.onChangeText({type: 'job', value: value})
-          }
-          error={this.props.error.job}
+          onChangeText={value => onChangeText({type: 'job', value: value})}
+          error={job_error}
+          value={job}
         />
         <Input
           label={strings.company}
           placeholder={strings.enterCompany}
-          onChangeText={value =>
-            this.props.onChangeText({type: 'companyname', value: value})
-          }
-          error={this.props.error.companyname}
+          onChangeText={value => onChangeText({type: 'company', value: value})}
+          error={company_error}
+          value={company}
         />
         <Input
           label={strings.country}
           placeholder={strings.enterCountry}
-          onChangeText={value =>
-            this.props.onChangeText({type: 'countryname', value: value})
-          }
-          error={this.props.error.countryname}
+          onChangeText={value => onChangeText({type: 'country', value: value})}
+          error={country_error}
+          value={country}
         />
         <Input
           label={strings.city}
           placeholder={strings.enterCity}
-          onChangeText={value =>
-            this.props.onChangeText({type: 'cityname', value: value})
-          }
-          error={this.props.error.cityname}
+          onChangeText={value => onChangeText({type: 'city', value: value})}
+          error={city_error}
+          value={city}
         />
         <View>
           <JButton
-            onPress={this.props.onSaveButtonPress}
+            onPress={onSaveButtonPress}
             title={strings.save}
             style={{
               backgroundColor: colors.darkBlue,
