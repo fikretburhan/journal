@@ -17,7 +17,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
+import strings from './strings';
 import {
   Colors,
   DebugInstructions,
@@ -28,6 +28,9 @@ import {
 import AppNavContainer from './src/navigations';
 
 const App = () => {
+  React.useEffect(() => {
+    strings.setLanguage('tr');
+  }, []);
   return <AppNavContainer />;
 };
 

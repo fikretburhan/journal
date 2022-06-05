@@ -11,8 +11,12 @@ import JIcon from '../common/JIcon/index';
 import styles from '../Input/styles';
 import JButton from '../common/JButton';
 import colors from '../../assets/themes/colors';
-
+import strings from '../../../strings';
 export default class ProfileComponent extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {}
   render() {
     return (
       <ScrollView style={{backgroundColor: 'white'}}>
@@ -25,81 +29,96 @@ export default class ProfileComponent extends Component {
           />
         </View>
         <Input
-          label="Ad:"
-          placeholder="Lütfen adınızı giriniz."
+          label={strings.firstName}
+          placeholder={strings.enterFirstName}
           onChangeText={value =>
             this.props.onChangeText({type: 'firstname', value: value})
           }
+          error={this.props.error.firstname}
         />
         <Input
-          label="Soyad:"
-          placeholder="Lütfen soyadınızı giriniz."
+          label={strings.lastName}
+          placeholder={strings.enterLastName}
           onChangeText={value =>
             this.props.onChangeText({type: 'lastname', value: value})
           }
+          error={this.props.error.lastname}
         />
         <Input
-          label="Email:"
-          placeholder="Lütfen email adresinizi giriniz."
+          label={strings.email}
+          placeholder={strings.enterEmailAddress}
           onChangeText={value =>
             this.props.onChangeText({type: 'email', value: value})
           }
+          error={this.props.error.email}
         />
         <Input
-          label="Telefon:"
-          placeholder="Lütfen telefon numaranızı giriniz."
+          label={strings.phone}
+          placeholder={strings.enterPhone}
           onChangeText={value =>
             this.props.onChangeText({type: 'phone', value: value})
           }
+          textContentType="telephoneNumber"
+          dataDetectorTypes="phoneNumber"
+          keyboardType="phone-pad"
+          maxLength={14}
+          value={this.props.phoneNum}
+          error={this.props.error.phone}
         />
         <Input
-          label="Bölüm:"
-          placeholder="Lütfen bölümünüzü giriniz."
+          label={strings.department}
+          placeholder={strings.enterDepartment}
           onChangeText={value =>
             this.props.onChangeText({type: 'department', value: value})
           }
+          error={this.props.error.department}
         />
         <Input
-          label="Mezuniyet Yılı:"
-          placeholder="Lütfen mezuniyet yılınızı giriniz."
+          label={strings.gradDate}
+          placeholder={strings.entergradDate}
           keyboardType="numeric"
           maxLength={4}
           onChangeText={value =>
             this.props.onChangeText({type: 'gradyear', value: value})
           }
+          error={this.props.error.gradyear}
         />
         <Input
-          label="Meslek:"
-          placeholder="Lütfen mesleğinizi giriniz."
+          label={strings.job}
+          placeholder={strings.enterJob}
           onChangeText={value =>
             this.props.onChangeText({type: 'job', value: value})
           }
+          error={this.props.error.job}
         />
         <Input
-          label="Firma:"
-          placeholder="Lütfen çalıştığınız firmayı giriniz."
+          label={strings.company}
+          placeholder={strings.enterCompany}
           onChangeText={value =>
             this.props.onChangeText({type: 'companyname', value: value})
           }
+          error={this.props.error.companyname}
         />
         <Input
-          label="Ülke:"
-          placeholder="Lütfen yaşadığınız ülkeyi giriniz."
+          label={strings.country}
+          placeholder={strings.enterCountry}
           onChangeText={value =>
             this.props.onChangeText({type: 'countryname', value: value})
           }
+          error={this.props.error.countryname}
         />
         <Input
-          label="Şehir:"
-          placeholder="Lütfen yaşadığınız şehri giriniz."
+          label={strings.city}
+          placeholder={strings.enterCity}
           onChangeText={value =>
             this.props.onChangeText({type: 'cityname', value: value})
           }
+          error={this.props.error.cityname}
         />
         <View>
           <JButton
             onPress={this.props.onSaveButtonPress}
-            title="Kaydet"
+            title={strings.save}
             style={{
               backgroundColor: colors.darkBlue,
               margin: 20,

@@ -6,9 +6,7 @@ class JournalDetail extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    console.log('JournalDetail', this.props);
-  }
+  componentDidMount() {}
   render() {
     return <JournalDetailComponent {...this.props} />;
   }
