@@ -1,4 +1,5 @@
 import {
+  FlatList,
   SafeAreaView,
   ScrollView,
   Text,
@@ -15,6 +16,8 @@ import strings from '../../../strings';
 export default class ProfileComponent extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {};
   }
   componentDidMount() {}
   render() {
@@ -45,9 +48,13 @@ export default class ProfileComponent extends Component {
       },
       onSaveButtonPress,
       onChangeText,
+      loading,
     } = this.props;
+
     return (
-      <ScrollView style={{backgroundColor: 'white'}}>
+      <ScrollView
+        style={{backgroundColor: 'white'}}
+        keyboardShouldPersistTaps={'handled'}>
         <View style={styles.personIconView}>
           <JIcon
             name="person"
@@ -146,6 +153,9 @@ export default class ProfileComponent extends Component {
               height: 40,
               borderRadius: 5,
             }}
+            primary
+            loading={loading}
+            disabled={loading}
           />
         </View>
       </ScrollView>

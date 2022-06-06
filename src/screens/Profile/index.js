@@ -11,6 +11,7 @@ export default class Profile extends Component {
       form: {},
       phoneNum: null,
       error: {},
+      loading: false,
     };
   }
 
@@ -24,7 +25,6 @@ export default class Profile extends Component {
     }
   }
   onSaveButtonPress = async () => {
-    console.log('onsavebutton press');
     const {
       firstname,
       lastname,
@@ -37,6 +37,7 @@ export default class Profile extends Component {
       country,
       city,
     } = this.state.form;
+    console.log('onsavebutton press', firstname);
     if (firstname == undefined || firstname.trim().length == 0) {
       this.setState(prevState => ({
         ...prevState,
@@ -128,7 +129,14 @@ export default class Profile extends Component {
       Object.values(this.state.form).every(item => item.trim().length > 0) &&
       Object.values(this.state.error).every(item => !item)
     ) {
-      await AsyncStorage.setItem('profile', JSON.stringify(this.state.form));
+      this.setState({loading: true});
+      await AsyncStorage.setItem('profile', JSON.stringify(this.state.form))
+        .then(result => {
+          this.setState({loading: false});
+        })
+        .catch(err => {
+          this.setState({loading: false});
+        });
     }
   };
   onChangeText = ({type, value}) => {
@@ -185,6 +193,7 @@ export default class Profile extends Component {
         phoneNum={this.state.phoneNum}
         error={this.state.error}
         form={this.state.form}
+        loading={this.state.loading}
       />
     );
   }
