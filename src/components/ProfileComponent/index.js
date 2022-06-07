@@ -5,21 +5,45 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
+  KeyboardAvoidingView,
+  Keyboard,
 } from 'react-native';
 import React, {Component} from 'react';
 import Input from '../Input';
 import JIcon from '../common/JIcon/index';
-import styles from '../Input/styles';
+import styles from './styles';
 import JButton from '../common/JButton';
 import colors from '../../assets/themes/colors';
 import strings from '../../../strings';
+import CountryPicker from 'react-native-country-picker-modal';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import CountrySelect from '../common/CountrySelectComponent';
+
+const WIN_HEIGHT = Dimensions.get('screen').height;
+
 export default class ProfileComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      selectedCountry: null,
+    };
+    this.RBSheet = React.createRef();
   }
   componentDidMount() {}
+  onCountrySelect = country => {
+    this.RBSheet.close();
+    this.props.onChangeText({type: 'country', value: country});
+    this.setState({selectedCountry: country});
+  };
+  getCountryTextPlaceholderStyle = () => {
+    let textColor;
+    this.props.form || this.state.selectedCountry
+      ? colors.primary
+      : colors.primary;
+    return {color: textColor, fontFamily: 'Montserrat'};
+  };
   render() {
     const {
       form: {
@@ -50,7 +74,7 @@ export default class ProfileComponent extends Component {
       onChangeText,
       loading,
     } = this.props;
-
+    const countryTextPlaceholderStyle = this.getCountryTextPlaceholderStyle();
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -77,14 +101,14 @@ export default class ProfileComponent extends Component {
           placeholder={strings.enterLastName}
           onChangeText={value => onChangeText({type: 'lastname', value: value})}
           error={lastname_error}
-          value={lastname}
+          value={this.props.form && this.props.form.lastname}
         />
         <Input
           label={strings.email}
           placeholder={strings.enterEmailAddress}
           onChangeText={value => onChangeText({type: 'email', value: value})}
           error={email_error}
-          value={email}
+          value={this.props.form && this.props.form.email}
         />
         <Input
           label={strings.phone}
@@ -94,7 +118,11 @@ export default class ProfileComponent extends Component {
           dataDetectorTypes="phoneNumber"
           keyboardType="phone-pad"
           maxLength={14}
-          value={this.props.phoneNum ? this.props.phoneNum : phone}
+          value={
+            this.props.phoneNum
+              ? this.props.phoneNum
+              : this.props.form && this.props.form.phone
+          }
           error={phone_error}
         />
         <Input
@@ -104,7 +132,7 @@ export default class ProfileComponent extends Component {
             onChangeText({type: 'department', value: value})
           }
           error={department_error}
-          value={department}
+          value={this.props.form && this.props.form.department}
         />
         <Input
           label={strings.gradDate}
@@ -113,35 +141,52 @@ export default class ProfileComponent extends Component {
           maxLength={4}
           onChangeText={value => onChangeText({type: 'gradyear', value: value})}
           error={gradyear_error}
-          value={gradyear}
+          value={this.props.form && this.props.form.gradyear}
         />
         <Input
           label={strings.job}
           placeholder={strings.enterJob}
           onChangeText={value => onChangeText({type: 'job', value: value})}
           error={job_error}
-          value={job}
+          value={this.props.form && this.props.form.job}
         />
         <Input
           label={strings.company}
           placeholder={strings.enterCompany}
           onChangeText={value => onChangeText({type: 'company', value: value})}
           error={company_error}
-          value={company}
+          value={this.props.form && this.props.form.company}
         />
-        <Input
-          label={strings.country}
-          placeholder={strings.enterCountry}
-          onChangeText={value => onChangeText({type: 'country', value: value})}
-          error={country_error}
-          value={country}
-        />
+        <View>
+          <Text style={styles.countryLabel}>{strings.country}</Text>
+          <TouchableOpacity
+            onPress={() => this.RBSheet.open()}
+            style={styles.countryView}>
+            <Text style={[styles.countryText, countryTextPlaceholderStyle]}>
+              {Object.values(this.props.form).length
+                ? this.props.form.country
+                : this.state.selectedCountry
+                ? 'this.state.selectedCountry'
+                : 'Ülke Seçiniz'}
+            </Text>
+            <JIcon
+              type="AntDesign"
+              name="caretdown"
+              size={15}
+              color={colors.darkBlue}
+              style={styles.icon}
+            />
+          </TouchableOpacity>
+          {country_error && (
+            <Text style={styles.countryError}>{country_error}</Text>
+          )}
+        </View>
         <Input
           label={strings.city}
           placeholder={strings.enterCity}
           onChangeText={value => onChangeText({type: 'city', value: value})}
           error={city_error}
-          value={city}
+          value={this.props.form && this.props.form.city}
         />
         <View>
           <JButton
@@ -158,6 +203,20 @@ export default class ProfileComponent extends Component {
             disabled={loading}
           />
         </View>
+        <RBSheet
+          ref={ref => {
+            this.RBSheet = ref;
+          }}
+          height={WIN_HEIGHT}
+          openDuration={350}
+          customStyles={{
+            container: {
+              justifyContent: 'flex-start',
+              alignItems: 'flex-start',
+            },
+          }}>
+          <CountrySelect onCountrySelect={this.onCountrySelect} />
+        </RBSheet>
       </ScrollView>
     );
   }

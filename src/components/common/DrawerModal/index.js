@@ -1,7 +1,6 @@
 import {Text, View, Modal, TouchableOpacity, ScrollView} from 'react-native';
 import React, {Component} from 'react';
 import styles from './styles';
-import {Divider} from '@rneui/themed';
 import JIcon from '../JIcon';
 import colors from '../../../assets/themes/colors';
 import {navigate} from '../../../navigations/RootNavigator';
@@ -59,7 +58,7 @@ export default class DrawerModal extends Component {
                       </Text>
                       {item.icon}
                     </TouchableOpacity>
-                    <Divider style={styles.divider} color={colors.darkBlue} />
+                    <View style={styles.divider} />
                   </View>
                 );
               })}

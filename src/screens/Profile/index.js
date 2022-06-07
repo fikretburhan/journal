@@ -18,7 +18,8 @@ export default class Profile extends Component {
   async componentDidMount() {
     try {
       await AsyncStorage.getItem('profile').then(value => {
-        this.setState({form: JSON.parse(value)});
+        let parsedForm = JSON.parse(value);
+        if (parsedForm) this.setState({form: parsedForm});
       });
     } catch (err) {
       console.log('err', err);
@@ -37,9 +38,8 @@ export default class Profile extends Component {
       country,
       city,
     } = this.state.form;
-    console.log('onsavebutton press', firstname);
     if (firstname == undefined || firstname.trim().length == 0) {
-      this.setState(prevState => ({
+      await this.setState(prevState => ({
         ...prevState,
         error: {...prevState.error, ['firstname']: strings.thisFieldIsRequired},
       }));
@@ -124,6 +124,7 @@ export default class Profile extends Component {
         },
       }));
     }
+
     if (
       Object.values(this.state.form).length &&
       Object.values(this.state.form).every(item => item.trim().length > 0) &&

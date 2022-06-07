@@ -29,6 +29,7 @@ export default StyleSheet.create({
   },
   divider: {
     marginHorizontal: 10,
-    color: colors.danger,
+    backgroundColor: colors.darkBlue,
+    height: 1.2,
   },
 });
