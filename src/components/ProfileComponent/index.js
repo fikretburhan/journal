@@ -16,7 +16,6 @@ import styles from './styles';
 import JButton from '../common/JButton';
 import colors from '../../assets/themes/colors';
 import strings from '../../../strings';
-import CountryPicker from 'react-native-country-picker-modal';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import CountrySelect from '../common/CountrySelectComponent';
 
@@ -26,22 +25,16 @@ export default class ProfileComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      selectedCountry: null,
-    };
+    this.state = {};
     this.RBSheet = React.createRef();
   }
   componentDidMount() {}
   onCountrySelect = country => {
     this.RBSheet.close();
     this.props.onChangeText({type: 'country', value: country});
-    this.setState({selectedCountry: country});
   };
   getCountryTextPlaceholderStyle = () => {
-    let textColor;
-    this.props.form || this.state.selectedCountry
-      ? colors.primary
-      : colors.primary;
+    let textColor = this.props.form.country ? colors.black : colors.gray;
     return {color: textColor, fontFamily: 'Montserrat'};
   };
   render() {
@@ -165,8 +158,6 @@ export default class ProfileComponent extends Component {
             <Text style={[styles.countryText, countryTextPlaceholderStyle]}>
               {Object.values(this.props.form).length
                 ? this.props.form.country
-                : this.state.selectedCountry
-                ? 'this.state.selectedCountry'
                 : 'Ülke Seçiniz'}
             </Text>
             <JIcon
@@ -191,7 +182,11 @@ export default class ProfileComponent extends Component {
         <View>
           <JButton
             onPress={onSaveButtonPress}
-            title={strings.save}
+            title={
+              Object.values(this.props.form).length
+                ? strings.update
+                : strings.save
+            }
             style={{
               backgroundColor: colors.darkBlue,
               margin: 20,

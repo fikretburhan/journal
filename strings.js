@@ -33,6 +33,7 @@ let strings = new LocalizedStrings({
   tr: {
     //#region common
     save: 'Kaydet',
+    update: 'Güncelle',
     login: 'Giriş',
     signin: 'Kaydol',
     thisFieldIsRequired: 'Bu alan zorunludur.',
