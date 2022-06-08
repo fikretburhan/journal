@@ -10,6 +10,7 @@ import JIcon from '../../components/common/JIcon';
 import colors from '../../assets/themes/colors';
 import HomeStack from '../HomeNavigator/index';
 import Profile from '../../screens/Profile';
+import Home from '../../screens/Home';
 import ArticleDetail from '../../screens/ArticleDetail';
 import NewsDetail from '../../screens/NewsDetail';
 export default function TabNavigator() {
@@ -18,11 +19,11 @@ export default function TabNavigator() {
   const TabItems = [
     {
       index: 0,
-      name: 'HomeStack',
+      name: 'Home',
       title: 'Ana Sayfa',
       onPress: e => {
         setTabIndex(e);
-        navigate('HomeStack');
+        navigate('Home');
       },
       icon: (
         <JIcon
@@ -79,11 +80,7 @@ export default function TabNavigator() {
   };
   return (
     <Tab.Navigator tabBar={props => <TabMenu {...props} />}>
-      <Tab.Screen
-        name="HomeStack"
-        component={HomeStack}
-        options={{headerShown: false}}
-      />
+      <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
       <Tab.Screen
         name="Archive"
         component={Archive}

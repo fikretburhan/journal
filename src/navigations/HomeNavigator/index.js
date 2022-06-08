@@ -11,14 +11,15 @@ import Home from '../../screens/Home';
 import colors from '../../assets/themes/colors';
 import JIcon from '../../components/common/JIcon';
 import {navigate} from '../RootNavigator';
+import TabNavigator from '../TabNavigator';
 
 export default function HomeNavigator({navigation, route}) {
   const HomeStack = createNativeStackNavigator();
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name="Home"
-        component={Home}
+        name="Tab"
+        component={TabNavigator}
         options={{headerBackTitleVisible: false, headerShown: false}}
       />
       <HomeStack.Screen
