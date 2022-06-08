@@ -39,6 +39,7 @@ let strings = new LocalizedStrings({
     thisFieldIsRequired: 'Bu alan zorunludur.',
     close: 'Kapat',
     open: 'Aç',
+    registerSuccess: 'Kayıt başarılı.',
     //#endregion
     //#region Profile
     firstName: 'Ad:',

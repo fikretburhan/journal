@@ -220,7 +220,10 @@ export default class ProfileComponent extends Component {
             <CountrySelect onCountrySelect={this.onCountrySelect} />
           </RBSheet>
         </ScrollView>
-        <NotificationModal {...this.props} description="Kayıt başarılı." />
+        <NotificationModal
+          {...this.props}
+          description={strings.registerSuccess}
+        />
       </>
     );
   }
