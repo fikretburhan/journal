@@ -37,6 +37,8 @@ let strings = new LocalizedStrings({
     login: 'Giriş',
     signin: 'Kaydol',
     thisFieldIsRequired: 'Bu alan zorunludur.',
+    close: 'Kapat',
+    open: 'Aç',
     //#endregion
     //#region Profile
     firstName: 'Ad:',

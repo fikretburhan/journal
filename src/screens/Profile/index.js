@@ -12,9 +12,12 @@ export default class Profile extends Component {
       phoneNum: null,
       error: {},
       loading: false,
+      modalVisible: false,
     };
   }
-
+  setModalVisible = modalVisible => {
+    this.setState({modalVisible: modalVisible});
+  };
   async componentDidMount() {
     try {
       await AsyncStorage.getItem('profile').then(value => {
@@ -133,7 +136,7 @@ export default class Profile extends Component {
       this.setState({loading: true});
       await AsyncStorage.setItem('profile', JSON.stringify(this.state.form))
         .then(result => {
-          this.setState({loading: false});
+          this.setState({loading: false, modalVisible: true});
         })
         .catch(err => {
           this.setState({loading: false});
@@ -187,14 +190,17 @@ export default class Profile extends Component {
     }
   };
   render() {
+    const {phoneNum, error, form, loading, modalVisible} = this.state;
     return (
       <ProfileComponent
         onSaveButtonPress={this.onSaveButtonPress}
         onChangeText={this.onChangeText}
-        phoneNum={this.state.phoneNum}
-        error={this.state.error}
-        form={this.state.form}
-        loading={this.state.loading}
+        phoneNum={phoneNum}
+        error={error}
+        form={form}
+        loading={loading}
+        setModalVisible={this.setModalVisible}
+        modalVisible={modalVisible}
       />
     );
   }
