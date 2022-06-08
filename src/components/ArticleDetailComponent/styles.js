@@ -24,9 +24,11 @@ export default StyleSheet.create({
   },
   articleView: {},
   articleText: {
-    textAlign: 'justify',
-    padding: 10,
-    color: colors.black,
+    //textAlign: 'justify',
+    padding: 15,
+    fontSize: 15,
+    color: colors.articleTextColor,
+    fontFamily: 'OpenSans-Condensed-SemiBold',
   },
   image: {height: 120, flex: 1, margin: 10},
 });

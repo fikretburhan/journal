@@ -17,4 +17,5 @@ export default {
   lightBlue: '#928BAE',
   linearDark: '#DEDBEC',
   pageInputColor: '#342087',
+  articleTextColor: '#484848',
 };
