@@ -15,7 +15,7 @@ import JIcon from '../common/JIcon/index';
 import styles from './styles';
 import JButton from '../common/JButton';
 import colors from '../../assets/themes/colors';
-import strings from '../../../strings';
+import strings from '../../utils/strings';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import CountrySelect from '../common/CountrySelectComponent';
 import NotificationModal from '../common/NotificationModel/index';

@@ -1,7 +1,7 @@
 import {Text, View} from 'react-native';
 import React, {Component} from 'react';
 import ProfileComponent from '../../components/ProfileComponent/index';
-import strings from '../../../strings';
+import strings from '../../utils/strings';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class Profile extends Component {

@@ -1,7 +1,7 @@
 import {Text, View, Modal, Pressable} from 'react-native';
 import React, {Component} from 'react';
 import styles from './styles';
-import strings from '../../../../strings';
+import strings from '../../../utils/strings';
 
 export default class NotificationModal extends Component {
   constructor(props) {
