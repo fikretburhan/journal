@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import {View, Text, TouchableOpacity} from 'react-native';
 import JournalDetail from '../../screens/JournalDetail';
 import Subscriptions from '../../screens/Subscriptions';
@@ -14,7 +15,7 @@ import {navigate} from '../RootNavigator';
 import TabNavigator from '../TabNavigator';
 
 export default function HomeNavigator({navigation, route}) {
-  const HomeStack = createNativeStackNavigator();
+  const HomeStack = createStackNavigator();
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
