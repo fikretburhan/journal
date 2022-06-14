@@ -15,7 +15,7 @@ export default class AppNavContainer extends Component {
     } = this.context;
     return (
       <NavigationContainer ref={navigationRef}>
-        {isLoggedIn ? <AuthNavigator /> : <HomeNavigator />}
+        {isLoggedIn ? <HomeNavigator /> : <HomeNavigator />}
       </NavigationContainer>
     );
   }
