@@ -10,7 +10,7 @@ import {
   Keyboard,
 } from 'react-native';
 import React, {Component} from 'react';
-import Input from '../Input';
+import Input from '../common/Input';
 import JIcon from '../common/JIcon/index';
 import styles from './styles';
 import JButton from '../common/JButton';

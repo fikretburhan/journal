@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import TabNavigator from './TabNavigator';
 import {navigationRef} from './RootNavigator';
 import HomeNavigator from './HomeNavigator';
+import AuthNavigator from './AuthNavigator';
 import {JournalContext} from '../context/Provider';
 
 export default class AppNavContainer extends Component {
@@ -15,7 +16,7 @@ export default class AppNavContainer extends Component {
     } = this.context;
     return (
       <NavigationContainer ref={navigationRef}>
-        {isLoggedIn ? <HomeNavigator /> : <HomeNavigator />}
+        {isLoggedIn ? <HomeNavigator /> : <AuthNavigator />}
       </NavigationContainer>
     );
   }

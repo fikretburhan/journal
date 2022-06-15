@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native';
-import colors from '../../assets/themes/colors';
+import colors from '../../../assets/themes/colors';
 export default StyleSheet.create({
   inputView: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     height: 50,
     marginHorizontal: 12,
@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   input: {
     height: '98%',
-    width: '90%',
+    width: '85%',
   },
   label: {
     marginHorizontal: 12,

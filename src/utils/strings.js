@@ -64,6 +64,16 @@ let strings = new LocalizedStrings({
     city: 'Şehir:',
     enterCity: 'Lütfen yaşadığınız şehri giriniz',
     //#endregion
+    //#region Login & Signup
+    username: 'Kullanıcı Adı',
+    password: 'Şifre',
+    signup: 'Kayıt ol',
+    login: 'Giriş',
+    userLogin: 'Kullanıcı Girişi',
+    logout: 'Çıkış',
+    createAnAccount: 'Hesap oluştur',
+    alreadyHaveAnAccount: 'Hesabım var',
+    //#endregion
   },
   en: {
     //#region common

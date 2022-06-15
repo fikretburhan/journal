@@ -4,8 +4,13 @@ import styles from './styles';
 import JIcon from '../JIcon';
 import colors from '../../../assets/themes/colors';
 import {navigate} from '../../../navigations/RootNavigator';
+import {JournalContext} from '../../../context/Provider';
+import {LOGOUT} from '../../../constants/actionNames';
+import logoutUser from '../../../context/actions/auth/logoutUser';
 export default class DrawerModal extends Component {
+  static contextType = JournalContext;
   render() {
+    const {authDispatch} = this.context;
     const DrawerList = [
       {
         index: 0,
@@ -18,7 +23,9 @@ export default class DrawerModal extends Component {
             color={colors.black}
           />
         ),
-        onPress: () => {},
+        onPress: () => {
+          logoutUser(authDispatch);
+        },
       },
       {
         index: 2,

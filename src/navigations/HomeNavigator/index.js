@@ -15,7 +15,7 @@ import {navigate} from '../RootNavigator';
 import TabNavigator from '../TabNavigator';
 
 export default function HomeNavigator({navigation, route}) {
-  const HomeStack = createStackNavigator();
+  const HomeStack = createNativeStackNavigator();
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen

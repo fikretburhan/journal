@@ -1,8 +1,8 @@
 import {Text, View, SafeAreaView, TextInput} from 'react-native';
 import React, {Component} from 'react';
 import styles from './styles';
-import JIcon from '../common/JIcon';
-import colors from '../../assets/themes/colors';
+import JIcon from '../JIcon';
+import colors from '../../../assets/themes/colors';
 
 export default class Input extends Component {
   constructor(props) {
@@ -53,6 +53,7 @@ export default class Input extends Component {
             onBlur={() => this.setState({focused: false})}
             {...this.props}
           />
+          {this.props.rightIcon && this.props.rightIcon}
         </View>
         {error && <Text style={[styles.error, this.props.style]}>{error}</Text>}
       </SafeAreaView>
