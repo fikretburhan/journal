@@ -14,19 +14,26 @@ import JButton from '../common/JButton';
 import styles from './styles';
 import {navigate, navigation} from '../../navigations/RootNavigator';
 import LinearGradient from 'react-native-linear-gradient';
-class LoginComponent extends Component {
-  render() {
-    const {onTextChange, onSubmit, secureTextEntry, error, showSecureText} =
-      this.props;
-    return (
+
+const LoginComponent = ({
+  onTextChange,
+  onSubmit,
+  secureTextEntry,
+  error,
+  showSecureText,
+}) => {
+  return (
+    <View style={styles.container}>
       <LinearGradient
-        colors={[colors.linearDark, colors.white, colors.linearDark]}
-        style={styles.container}>
+        colors={[colors.white, colors.blue]}
+        style={styles.topWrapper}
+      />
+      <View style={styles.middleWrapper}>
         <View style={styles.titleView}>
           <Text style={styles.title}>{strings.userLogin}</Text>
         </View>
         <Input
-          label={strings.username}
+          //label={strings.username}
           icon={
             <JIcon
               type="AntDesign"
@@ -38,9 +45,10 @@ class LoginComponent extends Component {
           iconPosition="left"
           onChangeText={value => onTextChange({type: 'userName', value: value})}
           error={error.userName}
+          placeholder={strings.username}
         />
         <Input
-          label={strings.password}
+          //label={strings.password}
           icon={
             <JIcon
               type="AntDesign"
@@ -65,11 +73,16 @@ class LoginComponent extends Component {
           onChangeText={value => onTextChange({type: 'password', value: value})}
           secureTextEntry={secureTextEntry}
           error={error.password}
+          placeholder={strings.password}
         />
         <JButton
           title={strings.login}
-          primary
-          style={{margin: 20, height: 40, borderRadius: 5}}
+          style={{
+            margin: 20,
+            height: 40,
+            borderRadius: 5,
+            backgroundColor: colors.blue,
+          }}
           onPress={onSubmit}
         />
         <View style={styles.createAccountButtonView}>
@@ -79,9 +92,9 @@ class LoginComponent extends Component {
             </Text>
           </Pressable>
         </View>
-      </LinearGradient>
-    );
-  }
-}
+      </View>
+    </View>
+  );
+};
 
 export default LoginComponent;

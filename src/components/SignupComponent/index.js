@@ -1,6 +1,11 @@
-import {Text, View, TouchableOpacity, Pressable} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Pressable,
+  Dimensions,
+} from 'react-native';
 import React, {Component} from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 import colors from '../../assets/themes/colors';
 import styles from './styles';
 import strings from '../../utils/strings';
@@ -8,20 +13,27 @@ import JButton from '../common/JButton';
 import Input from '../common/Input';
 import {navigate} from '../../navigations/RootNavigator';
 import JIcon from '../common/JIcon';
+import LinearGradient from 'react-native-linear-gradient';
 
-class SignupComponent extends Component {
-  render() {
-    const {onTextChange, onSubmit, secureTextEntry, error, showSecureText} =
-      this.props;
-    return (
+const SignupComponent = ({
+  onTextChange,
+  onSubmit,
+  secureTextEntry,
+  error,
+  showSecureText,
+}) => {
+  return (
+    <View style={styles.container}>
       <LinearGradient
-        colors={[colors.linearDark, colors.white, colors.linearDark]}
-        style={styles.container}>
+        colors={[colors.white, colors.blue]}
+        style={styles.topWrapper}
+      />
+      <View style={styles.middleWrapper}>
         <View style={styles.titleView}>
-          <Text style={styles.title}>{strings.userLogin}</Text>
+          <Text style={styles.title}>{strings.register}</Text>
         </View>
         <Input
-          label={strings.username}
+          //label={strings.username}
           icon={
             <JIcon
               type="AntDesign"
@@ -30,12 +42,13 @@ class SignupComponent extends Component {
               color={colors.lightBlue}
             />
           }
+          placeholder={strings.username}
           iconPosition="left"
           onChangeText={value => onTextChange({type: 'userName', value: value})}
           error={error.userName}
         />
         <Input
-          label={strings.password}
+          //label={strings.password}
           icon={
             <JIcon
               type="AntDesign"
@@ -56,15 +69,20 @@ class SignupComponent extends Component {
               />
             </TouchableOpacity>
           }
+          placeholder={strings.password}
           iconPosition="left"
           onChangeText={value => onTextChange({type: 'password', value: value})}
           secureTextEntry={secureTextEntry}
           error={error.password}
         />
         <JButton
-          title={strings.login}
-          primary
-          style={{margin: 20, height: 40, borderRadius: 5}}
+          title={strings.signup}
+          style={{
+            margin: 20,
+            height: 40,
+            borderRadius: 10,
+            backgroundColor: colors.blue,
+          }}
           onPress={onSubmit}
         />
         <View style={styles.alreadyHaveAccountButtonView}>
@@ -74,9 +92,9 @@ class SignupComponent extends Component {
             </Text>
           </Pressable>
         </View>
-      </LinearGradient>
-    );
-  }
-}
+      </View>
+    </View>
+  );
+};
 
 export default SignupComponent;

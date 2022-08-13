@@ -60,6 +60,9 @@ class Login extends Component {
     this.setState({secureTextEntry: value});
   };
   render() {
+    const {
+      authState: {language},
+    } = this.context;
     return (
       <LoginComponent
         onTextChange={this.onTextChange}

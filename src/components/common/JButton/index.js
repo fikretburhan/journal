@@ -25,7 +25,7 @@ export default class JButton extends Component {
         style={[
           styles.buttonView,
           style,
-          {backgroundColor: this.getBgColor()},
+          this.getBgColor() && {backgroundColor: this.getBgColor()},
         ]}>
         {loading ? (
           <ActivityIndicator color={colors.white} />

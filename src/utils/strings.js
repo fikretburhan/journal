@@ -75,11 +75,14 @@ let strings = new LocalizedStrings({
     alreadyHaveAnAccount: 'Hesabım var',
     //#endregion
   },
-  en: {
+  en_US: {
     //#region common
     save: 'Save',
-    login: 'Login',
-    signin: 'Signin',
+    update: 'Update',
+    thisFieldIsRequired: 'This Field is Required.',
+    close: 'Close',
+    open: 'Open',
+    registerSuccess: 'Kayıt başarılı.',
     //#endregion
     //#region Profile
     firstName: 'First Name',
@@ -103,6 +106,17 @@ let strings = new LocalizedStrings({
     city: 'City',
     enterCity: 'Please enter your living city',
     //#endregion
+    //#region Login & Signup
+    username: 'user name',
+    password: 'password',
+    signup: 'Signup',
+    login: 'Login',
+    signin: 'Signin',
+    register: 'Register',
+    userLogin: 'User Login',
+    logout: 'Logout',
+    createAnAccount: 'Create an Account',
+    alreadyHaveAnAccount: 'Already Have an Account',
   },
 });
 
